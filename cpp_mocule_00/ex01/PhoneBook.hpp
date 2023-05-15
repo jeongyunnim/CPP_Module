@@ -7,7 +7,7 @@ class PhoneBook
 	public:
 		PhoneBook();
 		~PhoneBook();
-		void		interactionMode(std::string command);
+		void		interactionMode(void);
 		void		search(void);
 	private:
 		Contact		contact[8];

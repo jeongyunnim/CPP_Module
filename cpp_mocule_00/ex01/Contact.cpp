@@ -2,12 +2,10 @@
 
 Contact::Contact()
 {
-	std::cout << "call Contact's constructor" << std::endl;
 }
 
 Contact::~Contact()
 {
-	std::cout << "call Contact's destructor" << std::endl;
 }
 
 void	Contact::add(void)

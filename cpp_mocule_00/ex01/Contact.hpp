@@ -15,6 +15,7 @@ class Contact
 		const std::string	getLastName(void);
 		const std::string	getNickName(void);
 		const std::string	getDarkestSecret(void);
+		void				printTenLetter(std::string);
 		void				setFirstName(void);
 		void				setLastName(void);
 		void				setNickName(void);
