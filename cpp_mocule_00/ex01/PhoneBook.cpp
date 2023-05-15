@@ -1,3 +1,4 @@
+#include <iomanip>
 #include "PhoneBook.hpp"
 
 PhoneBook::PhoneBook()
@@ -8,22 +9,45 @@ PhoneBook::PhoneBook()
 
 PhoneBook::~PhoneBook()
 {
+	std::cout << "See you again." << std::endl;
 }
 
-void	interactionMode(std::string command)
+void	PhoneBook::interactionMode(std::string command)
 {
-	if (command.size() != 1)
+	int	i;
+
+	while (1)
 	{
-		std::cout << "[Invalid input] Usage: 'A' for Add 'S' for Search 'E' for Exit" << std::endl;
+		if (command.size() != 1)
+		{
+			std::cout << "Invalid input\n[Usage] A: Add, S: Search, E: Exit" << std::endl;
+		}
+		else if (command[0] == 'A')
+		{
+			contact[count].add();
+		}
+		else if (command[0] == 'S')
+		{
+			search();
+		}
+		else if (command[0] == 'E')
+		{
+			return ;
+		}
+		else
+		{
+			std::cout << "Invalid input\n[Usage] A: Add, S: Search, E: Exit" << std::endl;
+		}	
 	}
-	else if (command[0] == 'A')
-		// hpp의 함수를 불러오려면 어떻게 해야하는가? PhoneBook 클래스가 가진 Contact 배열을 수정하고 싶다.
-	else if (command[0] == 'S')
-		// search
-	else if (command[0] == 'E')
-		// exit
-	else
+}
+
+void	PhoneBook::search(void)
+{
+	int	i;
+
+	i = 0;
+	while (i < count)
 	{
-		std::cout << "[Invalid input] Usage: 'A' for Add 'S' for Search 'E' for Exit" << std::endl;
-	}	
+		std::cout << contact[i].firstName << std::endl;
+	}
 }
