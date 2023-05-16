@@ -23,9 +23,10 @@ void	PhoneBook::interactionMode(void)
 	{
 		std::cout << "COMMAND: "; 
 		std::getline(std::cin, command);
+		// std::cin >> command;
 		if (std::cin.fail())
 		{
-			std::cout << "\nStandard input was failed" << std::endl;
+			std::cout << "\nconsole-in was failed" << std::endl;
 			return ;
 		}
 		if (command == "ADD")
@@ -41,22 +42,30 @@ void	PhoneBook::interactionMode(void)
 		{
 			return ;
 		}
+		else
+		{
+			std::cout << "\nInvalid input" << std::endl;
+		}
 	}
 }
 
 void	PhoneBook::search(void)
 {
-	int		i;
-	char	c;
+	std::string message;
+	int			i;
+	char		c;
 
 	i = 0;
 	while (i < count)
 	{
 		c = '0' + i;
 		std::cout << std::setw(10) << std::right << c << "|";
-		std::cout << std::setw(10) << std::right << contact[i].getFirstName() << "|";
-		std::cout << std::setw(10) << std::right << contact[i].getLastName() << "|";
-		std::cout << std::setw(10) << std::right << contact[i].getNickName() << "." << std::endl;
+		contact[i].getSimpleForm(message, 'f');
+		std::cout << std::setw(10) << std::right << message << "|";
+		contact[i].getSimpleForm(message, 'l');
+		std::cout << std::setw(10) << std::right << message << "|";
+		contact[i].getSimpleForm(message, 'n');
+		std::cout << std::setw(10) << std::right << message << std::endl;
 		i++;
 	}
 }

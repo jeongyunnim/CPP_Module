@@ -19,7 +19,7 @@ void	Contact::add(void)
 
 const std::string	Contact::getFirstName(void)
 {
-	return (firstName);	
+	return (firstName);
 }
 
 const std::string	Contact::getLastName(void)
@@ -40,24 +40,35 @@ const std::string	Contact::getDarkestSecret(void)
 void Contact::setFirstName()
 {
 	std::cout << "First name: ";
-	std::cin >> firstName;
-	if (firstName.size() == 0)
-		std::cout << "invalid input" << std::endl;
+	std::getline(std::cin, firstName);
+	// std::cin >> firstName;
+	if (std::cin.fail())
+	{
+		std::cout << "\nconsole input was failed" << std::endl;
+		return ;
+	}
 }
 
 void Contact::setLastName()
 {
 	std::cout << "Last name: ";
-	std::cin >> lastName;
-	if (lastName.size() == 0)
-		std::cout << "invalid input" << std::endl;
+	std::getline(std::cin, firstName);
+	if (std::cin.fail())
+	{
+		std::cout << "\nconsole input was failed" << std::endl;
+		return ;
+	}
 }
 
 void Contact::setNickName()
 {
-
 	std::cout << "Nickname: ";
-	std::cin >> nickName;
+	std::getline(std::cin, firstName);
+	if (std::cin.fail())
+	{
+		std::cout << "\nconsole input was failed" << std::endl;
+		return ;
+	}
 	if (nickName.size() == 0)
 		std::cout << "invalid input" << std::endl;
 }
@@ -65,5 +76,31 @@ void Contact::setNickName()
 void Contact::setDarkestSecret()
 {
 	std::cout << "Darkest secret: ";
-	std::cin >> darkestSecret;
+	std::getline(std::cin, firstName);
+}
+
+const std::string Contact::getSimpleForm(std::string& message, char c)
+{
+	if (c == 'f')
+	{
+		if (firstName.size() < 10)
+			message = firstName;
+		else
+			message = firstName.substr(0, 9) + '.';
+	}
+	else if (c == 'l')
+	{
+		if (lastName.size() < 10)
+			message = lastName;
+		else
+			message = lastName.substr(0, 9) + '.';
+	}
+	else if (c == 'N')
+	{
+		if (nickName.size() < 10)
+			message = nickName;
+		else
+			message = nickName.substr(0, 9) + '.';
+	}
+	return (message);
 }
