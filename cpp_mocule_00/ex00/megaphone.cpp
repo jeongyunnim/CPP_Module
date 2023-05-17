@@ -5,9 +5,8 @@
 
 int main(int argc, char *argv[])
 {
-	std::string sentence;
+	std::string	sentence;
 	int			i;
-	char		printChar;
 
 	if (argc < 2)
 	{
@@ -20,15 +19,10 @@ int main(int argc, char *argv[])
 		sentence += argv[i];
 		i++;
 	}
-	i = 0;
-	while (i < sentence.size())
+	for (std::string::iterator it = sentence.begin(); it != sentence.end(); it++)
 	{
-		printChar = sentence[i];
-		if ('a' <= sentence[i] && sentence[i] <= 'b')
-			printChar &= ~(0x01 << 5);
-		std::cout << printChar;
-		i++;
+		std::cout << static_cast<char>(std::toupper(*it));
 	}
 	std::cout << std::endl;
-	return (0);
+	return 0;
 }
