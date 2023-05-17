@@ -9,6 +9,8 @@ class PhoneBook
 		~PhoneBook();
 		void		interactionMode(void);
 		void		search(void);
+		const int	getCount(void);
+		void		contactOverflow(void);
 	private:
 		Contact		contact[8];
 		int			count;

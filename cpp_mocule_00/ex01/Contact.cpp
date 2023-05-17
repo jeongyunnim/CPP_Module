@@ -10,11 +10,16 @@ Contact::~Contact()
 
 void	Contact::add(void)
 {
-	setFirstName();
-	setLastName();
-	setNickName();
-	setDarkestSecret();
-	std::cout << "Successfully added" << std::endl;
+	if (std::cin.fail() == 0)
+		setFirstName();
+	if (std::cin.fail() == 0)
+		setLastName();
+	if (std::cin.fail() == 0)
+		setNickname();
+	if (std::cin.fail() == 0)
+		setDarkestSecret();
+	if (std::cin.fail() == 0)
+		std::cout << "[PhoneBook v1.0.0]Successfully Added" << std::endl;
 }
 
 const std::string	Contact::getFirstName(void)
@@ -27,9 +32,9 @@ const std::string	Contact::getLastName(void)
 	return (lastName);	
 }
 
-const std::string	Contact::getNickName(void)
+const std::string	Contact::getNickname(void)
 {
-	return (nickName);	
+	return (nickname);	
 }
 
 const std::string	Contact::getDarkestSecret(void)
@@ -41,42 +46,32 @@ void Contact::setFirstName()
 {
 	std::cout << "First name: ";
 	std::getline(std::cin, firstName);
-	// std::cin >> firstName;
-	if (std::cin.fail())
-	{
-		std::cout << "\nconsole input was failed" << std::endl;
+	if (std::cin.fail() || std::cin.eof())
 		return ;
-	}
 }
 
 void Contact::setLastName()
 {
 	std::cout << "Last name: ";
-	std::getline(std::cin, firstName);
-	if (std::cin.fail())
-	{
-		std::cout << "\nconsole input was failed" << std::endl;
+	std::getline(std::cin, lastName);
+	if (std::cin.fail() || std::cin.eof())
 		return ;
-	}
 }
 
-void Contact::setNickName()
+void Contact::setNickname()
 {
 	std::cout << "Nickname: ";
-	std::getline(std::cin, firstName);
-	if (std::cin.fail())
-	{
-		std::cout << "\nconsole input was failed" << std::endl;
+	std::getline(std::cin, nickname);
+	if (std::cin.fail() || std::cin.eof())
 		return ;
-	}
-	if (nickName.size() == 0)
-		std::cout << "invalid input" << std::endl;
 }
 
 void Contact::setDarkestSecret()
 {
 	std::cout << "Darkest secret: ";
-	std::getline(std::cin, firstName);
+	std::getline(std::cin, darkestSecret);
+	if (std::cin.fail() || std::cin.eof())
+		return ;
 }
 
 const std::string Contact::getSimpleForm(std::string& message, char c)
@@ -95,12 +90,12 @@ const std::string Contact::getSimpleForm(std::string& message, char c)
 		else
 			message = lastName.substr(0, 9) + '.';
 	}
-	else if (c == 'N')
+	else if (c == 'n')
 	{
-		if (nickName.size() < 10)
-			message = nickName;
+		if (nickname.size() < 10)
+			message = nickname;
 		else
-			message = nickName.substr(0, 9) + '.';
+			message = nickname.substr(0, 9) + '.';
 	}
 	return (message);
 }
