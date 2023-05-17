@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <string>
+#define ERROR -1
 
 class Contact
 {

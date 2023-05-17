@@ -96,15 +96,18 @@ void	PhoneBook::search(void)
 		std::getline(std::cin, index);
 		if (std::cin.fail() || std::cin.eof())
 			return ;
-		if (index.size() != 1 || index[0] < '0' || '8' < index[0])
+		if (index.size() != 1 || (index[0] < '0' || '8' < index[0] && 'x' != index[0]) || index[0] - '0' >= count)
 		{
-			std::cout << "Invalid input" << std::endl;
-			return ;
+			std::cout << "Invalid input\nIf you want back, please enter 'x'" << std::endl;
+			continue ;
 		}
-		std::cout << std::setw(20) << "First name: " << contact[index[i] - '0'].getFirstName() << std::endl;
-		std::cout << std::setw(20) << "Last name: " << contact[index[i] - '0'].getLastName() << std::endl;
-		std::cout << std::setw(20) << "Nickname: " << contact[index[i] - '0'].getNickname() << std::endl;
-		std::cout << std::setw(20) << "Darkest secret: " << contact[index[i] - '0'].getDarkestSecret() << std::endl;
+		else if (index[0] == 'x')
+			return ;
+		std::cout << std::setw(20) << "First name: " << contact[index[0] - '0'].getFirstName() << std::endl;
+		std::cout << std::setw(20) << "Last name: " << contact[index[0] - '0'].getLastName() << std::endl;
+		std::cout << std::setw(20) << "Nickname: " << contact[index[0] - '0'].getNickname() << std::endl;
+		std::cout << std::setw(20) << "Darkest secret: " << contact[index[0] - '0'].getDarkestSecret() << std::endl;
+		return ;
 	}
 }
 
