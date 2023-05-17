@@ -18,7 +18,7 @@ void	PhoneBook::interactionMode(void)
 	std::string command;
 	int		i;
 
-	std::cout << "\n[Usage]\n\n1.ADD: save a new contact.\n2.SEARCH: display a specific contact.\n3.EXIT: exit program.\n4.MAN: show the manual.\n\n";
+	std::cout << "\n[Usage]\n\n1.ADD: save a new contact.\n2.SEARCH: display a specific contact.\n3.EXIT: exit program.\n\n";
 	while (1)
 	{
 		std::cout << "COMMAND: "; 
@@ -37,8 +37,6 @@ void	PhoneBook::interactionMode(void)
 			search();
 		else if (command == "EXIT" || command == "3")
 			return ;
-		else if (command == "MAN" || command == "4")
-			std::cout << "\n[Usage]\n\n1.ADD: save a new contact.\n2.SEARCH: display a specific contact.\n3.EXIT: exit program.\n4.MAN: show the manual.\n\n";
 		else
 			std::cout << "\nError: Invalid input" << std::endl;
 		if (std::cin.eof())
