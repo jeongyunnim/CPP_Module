@@ -1,19 +1,29 @@
 #pragma once
+#ifndef __PHONEBOOK_H__
+#define __PHONEBOOK_H__
 #include <string>
 #include <iostream>
 #include "Contact.hpp"
 
 class PhoneBook
 {
-	public:
-		PhoneBook();
-		~PhoneBook();
-		void		interactionMode(void);
-		void		search(void);
-		const int	getCount(void);
-		void		contactOverflow(void);
-	private:
-		Contact		contact[8];
-		int			count;
-		const int	maxSize;
+public:
+
+	const int	getCount(void);
+
+	PhoneBook();
+	~PhoneBook();
+	
+	void		interactionMode(void);
+	void		contactOverflow(void);
+	void		search(void);
+
+private:
+
+	Contact		contact[8];
+	int			count;
+	const int	maxSize;
+
 };
+
+#endif

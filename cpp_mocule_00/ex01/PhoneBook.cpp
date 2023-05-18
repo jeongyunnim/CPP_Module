@@ -111,13 +111,10 @@ void	PhoneBook::search(void)
 
 void	PhoneBook::contactOverflow(void)
 {
-	int	i;
+	static int i;
 
-	i = 0;
-	while (i < 7)
-	{
-		contact[i] = contact[i + 1];
-		i++;
-	}
 	contact[i].add();
+	i++;
+	if (i == 7)
+		i = 0;
 }
