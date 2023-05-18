@@ -1,38 +1,5 @@
 #include "Contact.hpp"
 
-Contact::Contact()
-{
-}
-
-Contact::~Contact()
-{
-}
-
-void	Contact::add(void)
-{
-	while (1)
-	{
-		if ((std::cin.fail() == 0 || std::cin.eof() == 0) && firstName.size() == 0)
-			setFirstName();
-		if (firstName.size() == 0)
-			continue ;
-		if ((std::cin.fail() == 0 || std::cin.eof() == 0) && lastName.size() == 0)
-			setLastName();
-		if (lastName.size() == 0)
-			continue ;
-		if ((std::cin.fail() == 0 || std::cin.eof() == 0) && nickname.size() == 0)
-			setNickname();
-		if (nickname.size() == 0)
-			continue ;
-		else
-			break ;
-	}
-	if (std::cin.fail() == 0 || std::cin.eof() == 1)
-		setDarkestSecret();
-	if (std::cin.fail() == 0 || std::cin.eof() == 1)
-		std::cout << "[PhoneBook v1.0.0] Successfully Added" << std::endl;
-}
-
 const std::string	Contact::getFirstName(void)
 {
 	return (firstName);
@@ -115,6 +82,39 @@ void Contact::setDarkestSecret()
 	}
 }
 
+Contact::Contact()
+{
+}
+
+Contact::~Contact()
+{
+}
+
+void	Contact::add(void)
+{
+	while (1)
+	{
+		if ((std::cin.fail() == 0 || std::cin.eof() == 0) && firstName.size() == 0)
+			setFirstName();
+		if (firstName.size() == 0)
+			continue ;
+		if ((std::cin.fail() == 0 || std::cin.eof() == 0) && lastName.size() == 0)
+			setLastName();
+		if (lastName.size() == 0)
+			continue ;
+		if ((std::cin.fail() == 0 || std::cin.eof() == 0) && nickname.size() == 0)
+			setNickname();
+		if (nickname.size() == 0)
+			continue ;
+		else
+			break ;
+	}
+	if (std::cin.fail() == 0 || std::cin.eof() == 1)
+		setDarkestSecret();
+	if (std::cin.fail() == 0 || std::cin.eof() == 1)
+		std::cout << "[PhoneBook v1.0.0] Successfully Added" << std::endl;
+}
+
 const std::string Contact::getSimpleForm(std::string& message, char c)
 {
 	if (c == 'f')
@@ -139,4 +139,12 @@ const std::string Contact::getSimpleForm(std::string& message, char c)
 			message = nickname.substr(0, 9) + '.';
 	}
 	return (message);
+}
+
+void	Contact::clear(void)
+{
+	firstName.clear();
+	lastName.clear();
+	nickname.clear();
+	darkestSecret.clear();
 }

@@ -16,7 +16,6 @@ PhoneBook::~PhoneBook()
 void	PhoneBook::interactionMode(void)
 {
 	std::string command;
-	int		i;
 
 	std::cout << "\n[Usage]\n\n1.ADD: save a new contact.\n2.SEARCH: display a specific contact.\n3.EXIT: exit program.\n\n";
 	while (1)
@@ -52,7 +51,7 @@ void	PhoneBook::interactionMode(void)
 	}
 }
 
-const int	PhoneBook::getCount(void)
+int	PhoneBook::getCount(void)
 {
 	return (count);
 }
@@ -94,17 +93,17 @@ void	PhoneBook::search(void)
 		std::getline(std::cin, index);
 		if (std::cin.fail() || std::cin.eof())
 			return ;
-		if (index.size() != 1 || (index[0] < '0' || '8' < index[0] && 'x' != index[0]) || index[0] - '0' >= count)
+		if (index.size() != 1 || ((index[0] < '0' || '8' < index[0]) && 'x' != index[0]) || index[0] - '0' >= count)
 		{
 			std::cout << "Invalid input\nIf you want back, please enter 'x'" << std::endl;
 			continue ;
 		}
 		else if (index[0] == 'x')
 			return ;
-		std::cout << std::setw(20) << "First name: " << contact[index[0] - '0'].getFirstName() << std::endl;
-		std::cout << std::setw(20) << "Last name: " << contact[index[0] - '0'].getLastName() << std::endl;
-		std::cout << std::setw(20) << "Nickname: " << contact[index[0] - '0'].getNickname() << std::endl;
-		std::cout << std::setw(20) << "Darkest secret: " << contact[index[0] - '0'].getDarkestSecret() << std::endl;
+		std::cout << "|" << std::setw(18) << "First name|: " << contact[index[0] - '0'].getFirstName() << std::endl;
+		std::cout << "|" << std::setw(18) << "Last name|: " << contact[index[0] - '0'].getLastName() << std::endl;
+		std::cout << "|" << std::setw(18) << "Nickname|: " << contact[index[0] - '0'].getNickname() << std::endl;
+		std::cout << "|" << std::setw(18) << "Darkest secret|: " << contact[index[0] - '0'].getDarkestSecret() << std::endl;
 		return ;
 	}
 }
@@ -113,8 +112,9 @@ void	PhoneBook::contactOverflow(void)
 {
 	static int i;
 
+	contact[i].clear();
 	contact[i].add();
 	i++;
-	if (i == 7)
+	if (i == maxSize)
 		i = 0;
 }

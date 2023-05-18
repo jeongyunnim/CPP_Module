@@ -9,7 +9,7 @@ class PhoneBook
 {
 public:
 
-	const int	getCount(void);
+	int	getCount(void);
 
 	PhoneBook();
 	~PhoneBook();
@@ -21,8 +21,8 @@ public:
 private:
 
 	Contact		contact[8];
-	int			count;
 	const int	maxSize;
+	int			count;
 
 };
 

@@ -13,18 +13,19 @@ public:
 	const std::string	getLastName(void);
 	const std::string	getNickname(void);
 	const std::string	getDarkestSecret(void);
-	const std::string	getSimpleForm(std::string& message, char c);
+	void				setFirstName(void);
+	void				setLastName(void);
+	void				setNickname(void);
+	void				setDarkestSecret(void);
 
 	Contact();
 	~Contact();
 	Contact(const Contact& other);
 	//할당 생성자
 
-	void				setFirstName(void);
-	void				setLastName(void);
-	void				setNickname(void);
-	void				setDarkestSecret(void);
+	const std::string	getSimpleForm(std::string& message, char c);
 	void				add(void);
+	void				clear(void);
 
 private:
 

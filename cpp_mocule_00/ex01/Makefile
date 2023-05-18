@@ -6,10 +6,11 @@ CXXFLAGS	=	-Wall -Wextra -Werror
 INCS		=	./Contact.hpp\
 				./PhoneBook.hpp\
 
-SRCS		=	./Contact.cpp\
+SRCS		=	./main.cpp\
+				./Contact.cpp\
 				./PhoneBook.cpp\
 
-OBJS		=	$(SRCS:%c=%.o)
+OBJS		=	$(SRCS:%.cpp=%.o)
 
 RM			=	rm -f
 
@@ -18,7 +19,7 @@ all:	$(NAME)
 $(NAME): $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $@ $(OBJS)
 
-%o:	%.c
+%o:	%.c $(INCS)
 	$(CXX) $(CXXFLAGS) $(INCS) -c $^ -o $@
 
 clean: 
