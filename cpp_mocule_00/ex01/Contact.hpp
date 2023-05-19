@@ -20,8 +20,6 @@ public:
 
 	Contact();
 	~Contact();
-	Contact(const Contact& other);
-	//할당 생성자
 
 	const std::string	getSimpleForm(std::string& message, char c);
 	void				add(void);
