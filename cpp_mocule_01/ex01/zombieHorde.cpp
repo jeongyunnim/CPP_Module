@@ -19,7 +19,7 @@ Zombie* zombieHorde( int N, std::string name )
 			zombieName.clear();
 			zombieName = name;
 			if (i == 0)
-				zombieName += "Lord";
+				zombieName += " Lord";
 			else
 				zombieName += i + '0';
 			zombies[i].setName(zombieName);
