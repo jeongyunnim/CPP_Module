@@ -1,8 +1,9 @@
 #include <iomanip>
 #include "PhoneBook.hpp"
+#define MAX_SIZE 8
 
 PhoneBook::PhoneBook()
-	:	maxSize(8)
+	:	maxSize(MAX_SIZE)
 	,	count(0)
 {
 	std::cout << "Welcome to PhoneBook Ver 1.0.0" << std::endl;
@@ -24,7 +25,7 @@ void	PhoneBook::interactionMode(void)
 		std::getline(std::cin, command);
 		if (command == "ADD" || command == "1")
 		{
-			if (count == 8)
+			if (count == MAX_SIZE)
 				contactOverflow();
 			else
 			{
