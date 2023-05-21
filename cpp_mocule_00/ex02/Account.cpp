@@ -1,5 +1,6 @@
 #include <iostream>
 #include <ctime>
+#include <iomanip>
 #include "Account.hpp"
 
 /* static은 전역으로 초기화 해주기*/
@@ -31,7 +32,7 @@ int	Account::getNbWithdrawals( void )
 void	Account::displayAccountsInfos( void )
 {
 	_displayTimestamp();
-	std::cout << " accounts" << getNbAccounts() << ";total:" << getTotalAmount() << \
+	std::cout << " accounts:" << getNbAccounts() << ";total:" << getTotalAmount() << \
 				";deposits:" << getNbDeposits() << ";withdrawals:" << getNbWithdrawals() << std::endl;
 }
 
@@ -95,11 +96,16 @@ void	Account::displayStatus( void ) const
 void	Account::_displayTimestamp( void )
 {
 	time_t	timer;
-	struct tm * t;
+	struct tm *t;
 	
 	timer = time(NULL);
 	t = localtime(&timer);
 
-	std::cout << '[' << 1900 + t->tm_year << t->tm_mon << t->tm_hour << \
-				'_' << t->tm_hour << t->tm_min << t->tm_sec << ']';
+	std::cout << '[' << 1900 + t->tm_year << \
+				std::setw(2) << std::setfill('0') << t->tm_mon << \
+				std::setw(2) << std::setfill('0') << t->tm_hour << \
+				'_' << \
+				std::setw(2) << std::setfill('0') << t->tm_hour << \
+				std::setw(2) << std::setfill('0') << t->tm_min << \
+				std::setw(2) << std::setfill('0') << t->tm_sec << ']';
 	}
