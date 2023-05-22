@@ -1,32 +1,20 @@
-#include <iostream>
-#include <fstream>
+#include "controlFile.hpp"
 
 int	main(int argc, char *argv[])
 {
-	std::ifstream	fin;
-	std::fstream	fs;
-	std::string		content;
+	std::string		contents;
 
 	if (argc != 4)
 	{
 		std::cerr << "Error\nArgument count error" << std::endl;
 		return (1);
 	}
-	fin.open(argv[1]);
-	std::getline(fin, content, static_cast<char>(EOF));
-	// std::cout << content << std::endl;
+	contents = getFileContents(argv[1]);
+	if (contents.empty())
+		return (1);
 
-	std::ofstream	fout;
-	std::string		fileName;
-	
-	fileName = argv[1];
-	fileName += ".replace";
-	
-	fout.open(fileName);
-	fout << content;
+	if (replaceToNewFile(contents, argv[1]))
+		return (1);
 
-	//파일 닫기
-	fin.close();
-	fout.close();
 	return (0);
 }
