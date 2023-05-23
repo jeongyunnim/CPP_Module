@@ -15,6 +15,11 @@ const std::string	Contact::getNickname(void)
 	return (nickname);	
 }
 
+const std::string	Contact::getPhoneNumber(void)
+{
+	return (phoneNumber);
+}
+
 const std::string	Contact::getDarkestSecret(void)
 {
 	return (darkestSecret);	
@@ -24,7 +29,17 @@ int	isPrintable(std::string name)
 {
 	for(std::string::iterator it = name.begin(); it != name.end(); it++)
 	{
-		if (*it < ' ' || 127 < *it)
+		if (*it <= ' ' || 127 < *it)
+			return (ERROR);
+	}
+	return (0);
+}
+
+int	isNumber(std::string name)
+{
+	for(std::string::iterator it = name.begin(); it != name.end(); it++)
+	{
+		if (*it < '0' || '9' < *it)
 			return (ERROR);
 	}
 	return (0);
@@ -69,6 +84,19 @@ void Contact::setNickname()
 	}
 }
 
+void Contact::setPhoneNumber()
+{
+	std::cout << "Phone Number: ";
+	std::getline(std::cin, phoneNumber);
+	if (std::cin.fail() || std::cin.eof())
+		return ;
+	if (isNumber(phoneNumber) == ERROR || phoneNumber.size() == 0)
+	{
+		std::cout << "Invalid input. Please enter without '-' sign" << std::endl;
+		phoneNumber.clear();
+	}
+}
+
 void Contact::setDarkestSecret()
 {
 	std::cout << "Darkest secret: ";
@@ -94,6 +122,8 @@ void	Contact::add(void)
 {
 	while (1)
 	{
+		if (std::cin.fail() || std::cin.eof())
+			return ;
 		if ((std::cin.fail() == 0 || std::cin.eof() == 0) && firstName.size() == 0)
 			setFirstName();
 		if (firstName.size() == 0)
@@ -106,11 +136,16 @@ void	Contact::add(void)
 			setNickname();
 		if (nickname.size() == 0)
 			continue ;
-		else
-			break ;
+		if ((std::cin.fail() == 0 || std::cin.eof() == 0) && phoneNumber.size() == 0)
+			setPhoneNumber();
+		if (phoneNumber.size() == 0)
+			continue ;
+		if ((std::cin.fail() == 0 || std::cin.eof() == 0) && darkestSecret.size() == 0)
+			setDarkestSecret();
+		if (darkestSecret.size() == 0)
+			continue ;
+		break ;
 	}
-	if (std::cin.fail() == 0 || std::cin.eof() == 1)
-		setDarkestSecret();
 	if (std::cin.fail() == 0 || std::cin.eof() == 1)
 		std::cout << "[PhoneBook v1.0.0] Successfully Added" << std::endl;
 }
@@ -146,5 +181,6 @@ void	Contact::clear(void)
 	firstName.clear();
 	lastName.clear();
 	nickname.clear();
+	phoneNumber.clear();
 	darkestSecret.clear();
 }

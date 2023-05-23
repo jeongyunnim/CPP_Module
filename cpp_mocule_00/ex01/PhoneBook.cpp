@@ -71,6 +71,10 @@ void	PhoneBook::search(void)
 		return ;
 	}
 	std::cout << "============================================" << std::endl;
+	std::cout << std::setw(10) << std::right << "INDEX" << '|' << "FIRST NAME" << '|' << \
+				std::setw(10) << std::right << "LAST NAME" << '|' << \
+				std::setw(10) << std::right << "NICKNAME" << std::endl;
+	std::cout << "============================================" << std::endl;
 	i = 0;
 	while (i < count)
 	{
@@ -85,7 +89,6 @@ void	PhoneBook::search(void)
 		i++;
 	}
 	std::cout << "============================================" << std::endl;
-	/* 다른 함수로 나누어서 작성하고 싶은데, OOP의 개념과 맞는 것인지 잘 모르겠다.*/
 	std::string index;
 
 	while (1)
@@ -94,18 +97,27 @@ void	PhoneBook::search(void)
 		std::getline(std::cin, index);
 		if (std::cin.fail() || std::cin.eof())
 			return ;
-		if (index.size() != 1 || ((index[0] < '0' || '8' < index[0]) && 'x' != index[0]) || index[0] - '0' >= count)
+		if (index.size() != 1)
 		{
 			std::cout << "Invalid input\nIf you want back, please enter 'x'" << std::endl;
 			continue ;
 		}
 		else if (index[0] == 'x')
 			return ;
-		std::cout << "|" << std::setw(18) << "First name|: " << contact[index[0] - '0'].getFirstName() << std::endl;
-		std::cout << "|" << std::setw(18) << "Last name|: " << contact[index[0] - '0'].getLastName() << std::endl;
-		std::cout << "|" << std::setw(18) << "Nickname|: " << contact[index[0] - '0'].getNickname() << std::endl;
-		std::cout << "|" << std::setw(18) << "Darkest secret|: " << contact[index[0] - '0'].getDarkestSecret() << std::endl;
-		return ;
+		else if ('0' <= index[0] && index[0] <= '8' && index[0] - '0' < count)
+		{
+			std::cout << "|" << std::setw(18) << "First name|: " << contact[index[0] - '0'].getFirstName() << std::endl;
+			std::cout << "|" << std::setw(18) << "Last name|: " << contact[index[0] - '0'].getLastName() << std::endl;
+			std::cout << "|" << std::setw(18) << "Nickname|: " << contact[index[0] - '0'].getNickname() << std::endl;
+			std::cout << "|" << std::setw(18) << "Phone number|: " << contact[index[0] - '0'].getPhoneNumber() << std::endl;
+			std::cout << "|" << std::setw(18) << "Darkest secret|: " << contact[index[0] - '0'].getDarkestSecret() << std::endl;
+			return ;
+		}
+		else
+		{
+			std::cout << "Invalid input\nIf you want back, please enter 'x'" << std::endl;
+			continue ;
+		}
 	}
 }
 
