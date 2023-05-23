@@ -50,6 +50,16 @@ std::string	getFileContents( char *fileName )
 
 static int	replaceToContent(std::string& contents, std::string& findString, std::string& replaceString)
 {
+	size_t	found;
+
+	found = 0;
+	for (std::string::iterator it = contents.begin(); it < contents.end(); it++)
+	{
+		found = contents.find(findString, found);
+		if (found == contents.size())
+			return (0);
+		it += found;
+	}
 	return (0);
 }
 
