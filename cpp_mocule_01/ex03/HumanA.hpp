@@ -16,7 +16,6 @@ public:
 	void				setWeapon( Weapon& newWeapon );
 	void				setName( std::string& newName );
 
-	HumanA(void);
 	HumanA(std::string newName, Weapon& newWeapon);
 	~HumanA(void);
 
