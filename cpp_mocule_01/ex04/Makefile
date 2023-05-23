@@ -3,9 +3,10 @@ NAME = sed
 CXX 		=	c++
 CXXFLAGS	=	-Wall -Wextra -Werror -std=c++98
 
-INCS		=	
+INCS		=	./controlFile.hpp\
 
 SRCS		=	./main.cpp\
+				./controlFile.cpp\
 
 OBJS		=	$(SRCS:%.cpp=%.o)
 
