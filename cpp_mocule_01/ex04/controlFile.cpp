@@ -56,8 +56,13 @@ static int	replaceToContent(std::string& contents, std::string& findString, std:
 	for (std::string::iterator it = contents.begin(); it < contents.end(); it++)
 	{
 		found = contents.find(findString, found);
-		if (found == contents.size())
+		if (found == std::string::npos)
 			return (0);
+		else
+		{
+			contents.erase(found, findString.size());
+			contents.insert(found, replaceString);
+		}
 		it += found;
 	}
 	return (0);
@@ -75,6 +80,7 @@ int	replaceToNewFile( std::string contents, std::string fileName, std::string fi
 		return (ERROR);
 	}
 	replaceToContent(contents, findString, replaceString);
+	fout << contents;
 	fout.close();
 	return (0);
 }
