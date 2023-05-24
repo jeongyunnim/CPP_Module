@@ -19,8 +19,7 @@ int	main(int argc, char *argv[])
 		std::cerr << "Error\nNonprintable character error" << std::endl;
 		return (1);
 	}
-	contents = getFileContents(argv[1]);
-	if (contents.empty())
+	if (getFileContents(argv[1], contents) == ERROR)
 		return (1);
 	if (replaceToNewFile(contents, argv[1], argv[2], argv[3]) == ERROR)
 		return (1);

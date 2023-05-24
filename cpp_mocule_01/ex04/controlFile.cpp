@@ -1,21 +1,20 @@
 #include "controlFile.hpp"
 
-std::string	getFileContents( char *fileName )
+int	getFileContents( char *fileName, std::string& contents )
 {
 	std::ifstream	fin;
-	std::string	contents;
 
 	fin.open(fileName);
-	if (fin.bad())
+	if (fin.fail())
 	{
 		std::cerr << "Error\nOpen Error" << std::endl;
-		return (NULL);
+		return (ERROR);
 	}
 	std::getline(fin, contents, static_cast<char>(EOF));
 	if (!fin.eof())
 		contents.clear();
 	fin.close();
-	return (contents);
+	return (0);
 }
 
 int	stringErrorCheck(std::string findString, std::string replaceString)
@@ -59,7 +58,7 @@ int	replaceToNewFile( std::string contents, std::string fileName, std::string fi
 	
 	fileName += ".replace";
 	fout.open(fileName);
-	if (fout.bad())
+	if (fout.fail())
 	{
 		std::cerr << "Error\nOpen Error" << std::endl;
 		return (ERROR);
