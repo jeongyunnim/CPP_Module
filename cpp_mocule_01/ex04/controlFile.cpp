@@ -18,42 +18,27 @@ std::string	getFileContents( char *fileName )
 	return (contents);
 }
 
-// static int	isFindString(std::string& findString, std::string::iterator it)
-// {
-// 	for (size_t i = 0; i < findString.size(); i++)
-// 	{
-// 		if (*it != findString[i])
-// 			return (0);
-// 		it++;
-// 	}
-// 	return (1);
-// }
-
-// static void	writeNewFile(std::ofstream& fout, std::string& contents, std::string& findString, std::string& replaceString)
-// {
-// 	for (std::string::iterator it = contents.begin(); it < contents.end(); it++)
-// 	{
-// 		if (*it != findString[0])
-// 			fout << *it;
-// 		else
-// 		{
-// 			if (isFindString(findString, it) == 1)
-// 			{
-// 				it += findString.size() - 1;
-// 				fout << replaceString;
-// 			}
-// 			else
-// 				fout << *it;
-// 		}	
-// 	}
-// }
+int	stringErrorCheck(std::string findString, std::string replaceString)
+{
+	for(std::string::iterator it = findString.begin(); it < findString.end(); it++)
+	{
+		if (isprint(*it) == 0)
+			return (ERROR);
+	}
+	for(std::string::iterator it = replaceString.begin(); it < replaceString.end(); it++)
+	{
+		if (isprint(*it) == 0)
+			return (ERROR);
+	}
+	return (0);
+}
 
 static int	replaceToContent(std::string& contents, std::string& findString, std::string& replaceString)
 {
 	size_t	found;
 
 	found = 0;
-	for (std::string::iterator it = contents.begin(); it < contents.end(); it++)
+	while (1)
 	{
 		found = contents.find(findString, found);
 		if (found == std::string::npos)
@@ -62,8 +47,8 @@ static int	replaceToContent(std::string& contents, std::string& findString, std:
 		{
 			contents.erase(found, findString.size());
 			contents.insert(found, replaceString);
+			found += replaceString.size();
 		}
-		it += found;
 	}
 	return (0);
 }

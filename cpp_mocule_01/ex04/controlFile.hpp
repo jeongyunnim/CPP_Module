@@ -7,6 +7,6 @@
 #define ERROR -1
 
 std::string	getFileContents( char *fileName );
+int         stringErrorCheck( std::string findString, std::string replaceString );
 int			replaceToNewFile( std::string contents, std::string fileName, std::string findString, std::string replaceString );
-
 #endif

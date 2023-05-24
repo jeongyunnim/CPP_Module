@@ -14,6 +14,11 @@ int	main(int argc, char *argv[])
 		std::cerr << "Error\nEmpty string error" << std::endl;
 		return (1);
 	}
+	if (stringErrorCheck(argv[2], argv[3]) == ERROR)
+	{
+		std::cerr << "Error\nNonprintable character error" << std::endl;
+		return (1);
+	}
 	contents = getFileContents(argv[1]);
 	if (contents.empty())
 		return (1);
