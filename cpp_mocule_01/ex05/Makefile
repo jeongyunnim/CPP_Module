@@ -3,10 +3,10 @@ NAME 		=	Harl2.0
 CXX 		=	c++
 CXXFLAGS	=	-Wall -Wextra -Werror -std=c++98
 
-INCS		=	./controlFile.hpp\
+INCS		=	./Harl.hpp\
 
 SRCS		=	./main.cpp\
-				./controlFile.cpp\
+				./Harl.cpp\
 
 OBJS		=	$(SRCS:%.cpp=%.o)
 
@@ -14,10 +14,10 @@ RM			=	rm -f
 
 all:	$(NAME)
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) $(INCS)
 	$(CXX) $(CXXFLAGS) -o $@ $(OBJS)
 
-%o:	%.c $(INCS)
+%o:	%.c
 	$(CXX) $(CXXFLAGS) $(INCS) -c $^ -o $@
 
 clean: 

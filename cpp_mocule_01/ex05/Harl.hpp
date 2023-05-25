@@ -3,14 +3,6 @@
 #include <iostream>
 #include <string>
 
-enum e_complain
-{
-	DEBUG,
-	INFO,
-	WARNING,
-	ERROR
-};
-
 class Harl
 {
 public:
