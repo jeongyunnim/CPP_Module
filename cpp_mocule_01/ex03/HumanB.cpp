@@ -40,7 +40,7 @@ void    HumanB::attack( void )
 {
 	if (weapon == NULL)
 	{
-		std::cerr << "Error\nIs there NO weapon" << std::endl;
+		std::cerr << "Error\nThere is NO weapon" << std::endl;
 		return ;
 	}
 	std::cout << getName() << " attacks with their " << weapon->getType() << std::endl;

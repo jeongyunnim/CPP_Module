@@ -12,7 +12,10 @@ int	getFileContents( char *fileName, std::string& contents )
 	}
 	std::getline(fin, contents, static_cast<char>(EOF));
 	if (!fin.eof())
+	{
 		contents.clear();
+		return (ERROR);
+	}
 	fin.close();
 	return (0);
 }
