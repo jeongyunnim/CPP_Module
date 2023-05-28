@@ -6,8 +6,8 @@ Zombie::Zombie(void)
 }
 
 Zombie::Zombie( std::string zombieName )
+	:	name(zombieName)
 {
-	setName(zombieName);
 }
 
 Zombie::~Zombie(void)

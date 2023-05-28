@@ -4,6 +4,7 @@ Zombie* zombieHorde( int N, std::string name )
 {
 	Zombie		*zombies;
 	std::string	zombieName;
+	
 	if (N == 0)
 		return (NULL);
 	else if (N < 0)

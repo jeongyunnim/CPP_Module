@@ -6,8 +6,8 @@ Zombie::Zombie(void)
 }
 
 Zombie::Zombie( std::string zombieName )
+	:	name(zombieName)
 {
-	setName(zombieName); // 초기화 리스트 사용하는 것이 좋을듯
 }
 
 Zombie::~Zombie(void)

@@ -22,8 +22,8 @@ void	HumanA::setName( std::string& newName )
 
 HumanA::HumanA(std::string newName, Weapon& newWeapon)
 	:	weapon(newWeapon)
+	,	name(newName)
 {
-	setName(newName);
 }
 
 HumanA::~HumanA(void)
