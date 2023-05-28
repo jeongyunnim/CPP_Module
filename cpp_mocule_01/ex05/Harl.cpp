@@ -17,7 +17,7 @@ void	Harl::complain( std::string level )
 	{
 		if (level == arr[i])
 		{
-			(*complainType[i])(); // this 키워드를 사용할 때, 어떤 일이 벌어지는지. 함수 포인터 사용을 이렇게 복잡하게만 해야 하는지?
+			(this->*complainType[i])(); // this 키워드를 사용할 때, 어떤 일이 벌어지는지. 함수 포인터 사용을 이렇게 복잡하게만 해야 하는지?
 			return ;
 		}
 	}
