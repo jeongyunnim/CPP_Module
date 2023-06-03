@@ -9,7 +9,7 @@ class PhoneBook
 {
 public:
 
-	int	getCount(void);
+	int	getCount(void) const;
 
 	PhoneBook();
 	~PhoneBook();

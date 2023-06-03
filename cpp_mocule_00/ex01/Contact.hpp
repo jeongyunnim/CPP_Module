@@ -9,11 +9,11 @@ class Contact
 {
 public:
 
-	const std::string	getFirstName(void);
-	const std::string	getLastName(void);
-	const std::string	getNickname(void);
-	const std::string	getPhoneNumber(void);
-	const std::string	getDarkestSecret(void);
+	std::string	getFirstName(void) const;
+	std::string	getLastName(void) const;
+	std::string	getNickname(void) const;
+	std::string	getPhoneNumber(void) const;
+	std::string	getDarkestSecret(void) const;
 	void				setFirstName(void);
 	void				setLastName(void);
 	void				setNickname(void);
@@ -23,7 +23,7 @@ public:
 	Contact();
 	~Contact();
 
-	const std::string	getSimpleForm(std::string& message, char c);
+	std::string	getSimpleForm(std::string& message, char c) const;
 	void				add(void);
 	void				clear(void);
 

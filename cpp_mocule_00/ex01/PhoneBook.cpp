@@ -52,7 +52,7 @@ void	PhoneBook::interactionMode(void)
 	}
 }
 
-int	PhoneBook::getCount(void)
+int	PhoneBook::getCount(void) const
 {
 	return (count);
 }

@@ -1,26 +1,26 @@
 #include "Contact.hpp"
 
-const std::string	Contact::getFirstName(void)
+std::string	Contact::getFirstName(void) const
 {
 	return (firstName);
 }
 
-const std::string	Contact::getLastName(void)
+std::string	Contact::getLastName(void) const
 {
 	return (lastName);	
 }
 
-const std::string	Contact::getNickname(void)
+std::string	Contact::getNickname(void) const
 {
 	return (nickname);	
 }
 
-const std::string	Contact::getPhoneNumber(void)
+std::string	Contact::getPhoneNumber(void) const
 {
 	return (phoneNumber);
 }
 
-const std::string	Contact::getDarkestSecret(void)
+std::string	Contact::getDarkestSecret(void) const
 {
 	return (darkestSecret);	
 }
@@ -150,7 +150,7 @@ void	Contact::add(void)
 		std::cout << "[PhoneBook v1.0.0] Successfully Added" << std::endl;
 }
 
-const std::string Contact::getSimpleForm(std::string& message, char c)
+std::string Contact::getSimpleForm(std::string& message, char c) const
 {
 	if (c == 'f')
 	{
