@@ -18,10 +18,10 @@ RM			=	rm -f
 
 all:	$(NAME)
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) $(INCS)
 	$(CXX) $(CXXFLAGS) -o $@ $(OBJS)
 
-%o:	%.c $(INCS)
+%o:	%.c
 	$(CXX) $(CXXFLAGS) $(INCS) -c $^ -o $@
 
 clean: 
