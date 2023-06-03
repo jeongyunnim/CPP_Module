@@ -11,10 +11,10 @@ class HumanA
 
 public:
 
-	const Weapon		getWeapon( void );
-	const std::string	getName( void );
-	void				setWeapon( Weapon& newWeapon );
-	void				setName( std::string& newName );
+	Weapon		getWeapon( void ) const;
+	std::string	getName( void ) const;
+	void		setWeapon( Weapon& newWeapon );
+	void		setName( std::string& newName );
 
 	HumanA(std::string newName, Weapon& newWeapon);
 	~HumanA(void);

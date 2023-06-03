@@ -1,11 +1,11 @@
 #include "HumanB.hpp"
 
-const Weapon	*HumanB::getWeapon( void )
+Weapon	*HumanB::getWeapon( void ) const
 {
 	return (weapon);
 }
 
-const std::string	HumanB::getName( void )
+std::string	HumanB::getName( void ) const
 {
 	return (name);
 }
